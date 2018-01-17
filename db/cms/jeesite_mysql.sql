@@ -156,6 +156,66 @@ CREATE TABLE cms_site
 	PRIMARY KEY (id)
 ) COMMENT = '站点表';
 
+CREATE TABLE front_user
+(
+	id varchar(64) NOT NULL,
+	login_name varchar(100) NOT NULL,
+	password varchar(100) NOT NULL,
+	name varchar(100) NOT NULL,
+	email varchar(200),
+	mobile varchar(200),
+	photo varchar(1000),
+	login_ip varchar(100),
+	login_date datetime,
+	login_flag varchar(64),
+	email_code VARCHAR (64) COMMENT '邮箱验证码',
+	mobile_code VARCHAR (64) COMMENT '手机验证码',
+	code_time datetime COMMENT '验证码失效时间',
+	create_by varchar(64) NOT NULL COMMENT '创建者',
+	create_date datetime NOT NULL COMMENT '创建时间',
+	update_by varchar(64) NOT NULL  COMMENT '更新者',
+	update_date datetime NOT NULL  COMMENT '更新时间',
+	remarks varchar(255) COMMENT '备注信息',
+	del_flag char(1) DEFAULT '0' NOT NULL COMMENT '删除标记',
+	PRIMARY KEY (id)
+);COMMENT = '前台用户表';
+
+CREATE TABLE user_wallet
+(
+	id varchar(64) NOT NULL,
+  user_id varchar(64) NOT NULL COMMENT '用户ID',
+  wallet_type varchar(64) NOT NULL COMMENT '币种',
+  wallet_balance varchar(64) NOT NULL COMMENT '余额',
+	wallet_photo varchar(1000) COMMENT '钱包二维码图片',
+	wallet_address varchar(1000) COMMENT '钱包地址',
+	trad_hash varchar(1000) COMMENT '转账HASH',
+	create_by varchar(64) NOT NULL COMMENT '创建者',
+	create_date datetime NOT NULL COMMENT '创建时间',
+	update_by varchar(64) NOT NULL  COMMENT '更新者',
+	update_date datetime NOT NULL  COMMENT '更新时间',
+	remarks varchar(255) COMMENT '备注信息',
+	del_flag char(1) DEFAULT '0' NOT NULL COMMENT '删除标记',
+	PRIMARY KEY (id)
+);COMMENT = '用户钱包表';
+
+CREATE TABLE user_card
+(
+	id varchar(64) NOT NULL,
+  user_id varchar(64) NOT NULL COMMENT '用户ID',
+  card_zphoto varchar(64) NOT NULL COMMENT '身份证正面',
+  card_fphoto varchar(64) NOT NULL COMMENT '身份证反面 ',
+	card_scphoto varchar(1000) COMMENT '身份证手持',
+	card_name varchar(1000) COMMENT '真实姓名',
+	card_no varchar(1000) COMMENT '身份证编号',
+	status varchar(1000) COMMENT '状态：0待审核，1审核成功，2审核失败 ',
+	create_by varchar(64) NOT NULL COMMENT '创建者',
+	create_date datetime NOT NULL COMMENT '创建时间',
+	update_by varchar(64) NOT NULL  COMMENT '更新者',
+	update_date datetime NOT NULL  COMMENT '更新时间',
+	remarks varchar(255) COMMENT '备注信息',
+	del_flag char(1) DEFAULT '0' NOT NULL COMMENT '删除标记',
+	PRIMARY KEY (id)
+);COMMENT = '用户实名认证表';
 
 
 /* Create Indexes */
