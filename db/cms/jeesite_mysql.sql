@@ -218,6 +218,17 @@ CREATE TABLE user_card
 );COMMENT = '用户实名认证表';
 
 
+CREATE TABLE verificat_code
+(
+	id varchar(64) NOT NULL,
+	user_id varchar(64) NOT NULL COMMENT '用户ID',
+	code_type varchar(64) NOT NULL COMMENT '验证码类型，email,mobile',
+	expired_date datetime NOT NULL  COMMENT '过期时间',
+	content varchar(255) COMMENT '内容验证码',
+	PRIMARY KEY (id)
+);COMMENT = '验证码表';
+
+
 /* Create Indexes */
 
 CREATE INDEX cms_article_create_by ON cms_article (create_by ASC);
